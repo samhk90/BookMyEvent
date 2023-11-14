@@ -1,0 +1,104 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>BookMyEvent</title>
+</head>
+<body>
+  <style>
+  body{
+    overflow: hidden;
+  }
+  #bmain{
+    padding: 70px;
+    background-color: rgba(0, 0, 0, 0.655);
+    color: black;
+    background-image: url("{% static 'img/banner.avif' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
+  }
+  .moviename{
+    margin: 10px;
+    font-size: 2.2rem;
+    color: black;
+  }
+  #moviebutton{
+    padding: 10px;
+    width: 340px;
+  }
+  .card3{
+    margin: 20px;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    height: 340px;
+    background-color:rgba(0, 0, 0, 0.655) ;
+  }
+</style>
+  <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">BookMyEvent</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="main">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="main">Events</a>
+            </li>
+          </ul>
+          <span style=" text-align:left;color: white;width: 56px;"><a href="profile" style="color: white;"><i class="fa fa-user-o" style="font-size: 20px;"></a></i></span>
+          <!-- <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form> -->
+        </div>
+      </div>
+    </nav>    
+    {% for event in events%}
+    <div class="container-fluid" id="bmain">
+    <div class="row">
+      <div class="col-sm-3 ">
+        <div class="card1">
+          <img src="{{ event.eventImage.url }}" alt="">
+        </div>
+      </div>
+
+      <div class="col-sm-5">
+        <Span class="moviename">{{event.eventName}}</Span>
+        <p style="vertical-align: top;">{{events.eventgenre}}</p>
+        <h4>	&#x20B9; {{event.eventPrice}}
+        </h4>
+        <p>2hr 49m . UA . 7 sep, 2023</p>
+        <a href="bookingform?username={{user}}&eventName={{event.eventName}}&eventprice={{event.eventPrice}}" style="color: white;text-decoration:none"><button class="btn btn-primary" id="moviebutton" >Book Tickets</button></a>
+      </div>
+      <div class="col-sm-4">
+        <div class="card3">
+          <span style="margin: 10px;"><h3>About Event</h3></span>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, quo exercitationem. Numquam delectus sit, quaerat at, ad obcaecati, sed necessitatibus recusandae harum illo dolorem eos omnis officiis magnam provident est.</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+    <script src="{% static '/app.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</body>
+</html>
