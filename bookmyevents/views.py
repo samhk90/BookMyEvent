@@ -4,10 +4,12 @@ from django.http import HttpResponse
 from .models import User,Booking,Events
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
+    username = request.GET.get('username')
+    return render(request,'index.html',{'user':username})
 
 def landing2(request):
-    return render(request,'landing2.html')
+    username = request.GET.get('username')
+    return render(request,'landing2.html',{'user':username})
 def landing2(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -40,10 +42,10 @@ def index(request):
 def main(request):  
     username = request.GET.get('username')
     events = Events.objects.all()
-    events1 = Events.objects.filter(eventgenre='movie')
-    events2 = Events.objects.filter(eventgenre='online event')
+    events1 = Events.objects.filter(eventgenre='Movie')
+    events2 = Events.objects.filter(eventgenre='Online Event')
     events3 = Events.objects.filter(eventgenre='comedy')
-    return render(request, 'main.html',{'events':events,'events1':events1,'events2':events2,'events':events3,'user':username})
+    return render(request, 'main.html',{'events':events,'events1':events1,'events2':events2,'events3':events3,'user':username})
 def book(request):
      username = request.GET.get('username')
      event = request.GET.get('eventName')

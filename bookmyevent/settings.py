@@ -80,12 +80,12 @@ WSGI_APPLICATION = 'bookmyevent.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'defaultdb',
-        'USER': 'avnadmin',
-        'PASSWORD': 'AVNS_hfGs5MaVUNR61bytKJt',
-        'HOST': 'mysql-3f3fa473-shaikhsamiallhabakh705835-e2be.a.aivencloud.com',  
-        'PORT': '3360',
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': 'postgres',
+                'USER': 'postgres',
+                'PASSWORD': '9022@Shaikh',
+                'HOST': 'db.bcaanygpwbqpvsatjxwt.supabase.co',
+                'PORT': '5432',
     }
 }
 
