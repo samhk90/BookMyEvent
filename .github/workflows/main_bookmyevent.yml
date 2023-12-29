@@ -42,6 +42,45 @@ jobs:
           path: |
             release.zip
             !venv/
+            name: Your Workflow Name
+
+on:
+  push:
+    branches:
+      - main  # Change this to your branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8  # Specify the Python version you need
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16  # Use Node.js version 16
+
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements.txt
+        npm install
+
+    - name: Run Tests
+      run: |
+        python manage.py test
+
+    - name: Deploy to Azure
+      run: |
+        # Add your deployment commands here
+
+
 
   deploy:
     runs-on: ubuntu-latest
